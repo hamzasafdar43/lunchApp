@@ -15,7 +15,7 @@ mongoose.connection.once("open",()=>{
     console.log("database is connected")
 })
 app.get("/",(req,res)=>{
-  res.send("welcome")
+  res.send("welcome food app" )
 })
 app.use("/" , router)
 app.use("/" ,route)
