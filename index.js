@@ -13,7 +13,9 @@ mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open",()=>{
     console.log("database is connected")
 })
-
+app.get("/",(req,res)=>{
+  res.send("welcome")
+})
 app.post("/Sign-Up" , userRegister)
 app.post("/login" , loginUser)
 app.post("/lunch" , addFood )
