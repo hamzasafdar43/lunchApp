@@ -3,8 +3,9 @@ const app = express();
 const PORT = 5000
 const mongoose = require("mongoose");
 const {userRegister , loginUser} = require("./Controller/userController");
-const {addFood , deleteFood, getFood , updateFood } = require("./Controller/foodController");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const  router  = require("./routes/foodRoute");
+const  route  = require("./routes/userroute");
 
 //dotenv conig
 dotenv.config();
@@ -16,12 +17,9 @@ mongoose.connection.once("open",()=>{
 app.get("/",(req,res)=>{
   res.send("welcome")
 })
-app.post("/Sign-Up" , userRegister)
-app.post("/login" , loginUser)
-app.post("/lunch" , addFood )
-app.delete("/deleteFood/:id" , deleteFood )
-app.get("/allFood" , getFood )
-app.put("/updateFood/:id" , updateFood )
+app.use("/" , router)
+app.use("/" ,route)
+
 
 
 app.listen(PORT, () => {
